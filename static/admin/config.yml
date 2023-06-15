@@ -17,6 +17,24 @@ publish_mode: editorial_workflow
 media_folder: "/static/wp-content/uploads" # Media files will be stored in the repo under static/images/uploads
 public_folder: "/wp-content/uploads" # The src attribute for uploaded media will begin with /images/uploads
 collections:
+  - name: "authors" # Used in routes, e.g., /admin/collections/blog
+    label: "Authors" # Used in the UI
+    label_singular: 'authors'
+    folder: "content/authors" # The path to the folder where the documents are stored
+    create: true
+    slug: "{{title}}/_index"
+    fields:
+      - widget: "object" 
+        name: "_build"
+        fields: 
+          - {widget: "hidden" , name: "list" ,default: false}
+          - {widget: "hidden" , name: "publishResources" ,default: false}
+          - {widget: "hidden" , name: "render" ,default: false}
+      
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Avatar", name: "avatar", widget: "Image", allow_multiple: false}
+      - {label: "Bio", name: "bio", widget: "string"}
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
     label: "Blog" # Used in the UI
     label_singular: 'blog'
@@ -40,9 +58,9 @@ collections:
       - {label: "Description", name: "description", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Tags", name: "tags", widget: "list", allow_add: true, hint: "Separate by comma `,`"}
-      - {label: "Authors", name: "authors", widget: "list", allow_add: true}
-      - {label: "Related To", name: "relatedTo", widget: "relation", multiple: true, collection: "blog",value_field: "{{category}}", search_fields: ["{{slug}}","title"]}
+      - {label: "Authors",multiple: true , name: "authors", widget: "relation", collection: "authors" ,value_field: "{{title}}" , display_fields: ["{{name}}"], search_fields: ["{{slug}}","{{title}}" ,"{{bio}}" ]}
+      - {label: "Related To", name: "relatedTo", widget: "customRelation", multiple: true, collection: "blog",deep: 3,value_field: "/blog/{{slug}}",display_fields: ["{{title}}"], search_fields: ["{{slug}}","title"] ,required: false}
       - {label: "Featured Image", name: "featured_image", widget: "image"}
-      - {label: "Alt of the Featured Image", name: "imageAlt", widget: "string"}
+      - {label: "Alt of the Featured Image", name: "imageAlt", widget: "string",required: false}
       - {label: "Read Time", name: "readTime", widget: "string",hint: "< 1 min read Or 2 min read", pattern: ['(< )*\d+ (min read)','Valid pattern is: `2 min read` | `< 1 min read`']}
       - {label: "Body", name: "body", widget: "markdown"}

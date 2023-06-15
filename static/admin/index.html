@@ -9,5 +9,55 @@
 <body>
   <!-- Include the script that builds the page and powers Decap CMS -->
   <script src="./cms.js"></script>
+  <script>
+    var CustomRelationControl = createClass({
+      handleChange: function(a,b) {
+        /*  console.log(a,b)
+        a._tail.array=a._tail.array.map(arr=>arr.substr(0,arr.length-7))
+        for(const key in b.relatedTo){
+          for(const path in b.relatedTo[key]){
+            b.relatedTo[key][path.substr(0,path.length-7)]=b.relatedTo[key][path]
+          }
+        }  */
+        //this.props.onChange(e.target.value);
+        return this.props.onChange(a,b)
+      },
+      query:async function(a,b,c,d,e,f){
+        
+        const response=await this.props.query(a,b,c,d,e,f)
+        if(response.payload?.hits){
+          const deep=this.props.field.get('deep', 1);
+          response.payload.hits=response.payload.hits.filter(h=>h.slug.split('/').length===deep).map(h=>{
+      
+          return {
+            ...h,
+            slug:h.slug.substr(0,h.slug.length-7)
+          };
+          })
+        }
+        return response
+      },
+    
+      render: function() {
+       const RelationControl =CMS.getWidget('relation').control
+       
+        var value = this.props.value;
+        return h(RelationControl, {
+         ...this.props,
+         query:this.query,
+          onChange: this.handleChange,
+        });
+      },
+    });
+    const schema={
+      ...CMS.getWidget('relation').schema,
+      properties:{
+        ...CMS.getWidget('relation').schema.properties,
+        deep: {type:'number'}
+      }
+    }
+    
+    CMS.registerWidget('customRelation', CustomRelationControl,CMS.getWidget('relation').preview,schema);
+    </script>
 </body>
 </html>
