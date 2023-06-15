@@ -14,7 +14,7 @@ backend:
         uploadMedia: "Upload “{{path}}”"
         deleteMedia: "Delete “{{path}}”"
 publish_mode: editorial_workflow
-media_folder: "static/wp-content/uploads" # Media files will be stored in the repo under static/images/uploads
+media_folder: "/static/wp-content/uploads" # Media files will be stored in the repo under static/images/uploads
 public_folder: "/wp-content/uploads" # The src attribute for uploaded media will begin with /images/uploads
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
@@ -29,13 +29,13 @@ collections:
       summary: '{{title}}' # optional summary for a tree node, defaults to the inferred title field
     # adding a meta object with a path property allows editing the path of entries
     # moving an existing entry will move the entire sub tree of the entry to the new location
-    meta: { path: { widget: select, label: 'Category', index_file: '_index',options: ["corporate","engineering","product"] } }
+    #meta: { path: { widget: select, label: 'Category', index_file: '_index',options: ["corporate","engineering","product"] } }
     fields: # The fields for each document, usually in front matter
       - {label: "Layout", name: "layout", widget: "hidden", default: "single"}
       - {label: "type", name: "type", widget: "hidden", default: "post"}
       - {label: "customCss", name: "customCss", widget: "hidden", default: ["/css/post-230.css"]}
       - {label: "darkHeader", name: "darkHeader", widget: "hidden", default: true}
-      - {label: "Title", name: "title", widget: "string",pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "A slug can have no spaces or special characters"]}
+      - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Tags", name: "tags", widget: "list", allow_add: true, hint: "Separate by comma `,`"}
