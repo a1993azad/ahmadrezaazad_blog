@@ -4,6 +4,7 @@ type: post
 customCss:
   - /css/post-230.css
 darkHeader: true
+category: corporate
 title: title 1-test
 description: desc 1
 date: 2023-06-15T11:53:35.384Z
