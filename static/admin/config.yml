@@ -3,7 +3,7 @@ backend:
   site_domain: "localhost" #cms.netlify.com when on localhost
   name: github
   #name: test-repo
-  branch: dev # Branch to update (optional; defaults to master)
+  branch: main # Branch to update (optional; defaults to master)
   base_url: "http://localhost"
   auth_endpoint: "auth"
   cms_label_prefix: "admin_cms/"
