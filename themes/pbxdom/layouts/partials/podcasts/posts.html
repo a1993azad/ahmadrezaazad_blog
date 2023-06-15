@@ -1,0 +1,18 @@
+<div class="elementor-element elementor-element-f3bfcda premium-blog-align-left elementor-widget elementor-widget-premium-addon-blog"
+data-id="f3bfcda" data-element_type="widget"
+data-settings="{&quot;premium_blog_columns_number&quot;:&quot;33.33%&quot;,&quot;premium_blog_grid&quot;:&quot;yes&quot;,&quot;premium_blog_layout&quot;:&quot;even&quot;,&quot;premium_blog_columns_number_tablet&quot;:&quot;50%&quot;,&quot;premium_blog_columns_number_mobile&quot;:&quot;100%&quot;}"
+data-widget_type="premium-addon-blog.default">
+<div class="elementor-widget-container">
+    <div class="premium-blog">
+        <div class="premium-blog-wrap  premium-blog-even" data-page="9984">
+          {{- $paginator := .Scratch.Get "paginator"}}
+            {{ range $paginator.Pages }} 
+                {{- partial "podcasts/article.html" . -}}
+            {{ end }}
+        
+        </div>
+    </div>
+
+    {{- partial "pagination.html" . -}}
+</div>
+</div>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en-US">
+    {{ $currentPageTitle := .Title }}
+    {{- if (findRE `(^Blog)|(^Academy)|(^Podcasts)|(^Sample Reports)|(Spanish Archives)|(Hebrew Archives)|(Italian Archives)` $currentPageTitle)}}
+        {{- $category := (cond (eq .Title "Blog") nil .Title) }}
+        {{- $category = (cond (eq .Title "Academy") nil $category) }}
+        {{- $category = (cond (eq .Title "Podcasts") nil $category) }}
+        {{- $category = (cond (eq .Title "Sample Reports") nil $category) }}
+        {{- $category = (cond (eq .Title "Spanish Archives") "es" $category) }}
+        {{- $category = (cond (eq .Title "Hebrew Archives") "he" $category) }}
+        {{- $category = (cond (eq .Title "Italian Archives") "it" $category) }}
+        {{- $lang := (cond (eq .Title "Spanish Archives") "es" nil) }}
+        {{- $lang = (cond (eq .Title "Hebrew Archives") "he" $lang) }}
+        {{- $lang = (cond (eq .Title "Italian Archives") "it" $lang) }}
+        {{- $Section := .CurrentSection}}
+        {{- .Scratch.Set "category" $category}}
+        {{- .Scratch.Set "Section" $Section}}
+        {{- .Scratch.Set "lang" $lang}}
+        {{- $filteredPages := slice }}
+        {{- $rooSection := cond (ne (findRE `Blog` $currentPageTitle) nil) "blog" $currentPageTitle}}
+        {{- $rooSection = cond (ne (findRE `Academy` $currentPageTitle) nil) "academy" $rooSection}}
+        {{- $rooSection = cond (ne (findRE `Podcasts` $currentPageTitle) nil) "podcasts" $rooSection}}
+        {{- $rooSection = cond (ne (findRE `Sample Reports` $currentPageTitle) nil) "sample-reports" $rooSection}}
+        {{- $blogType := cond ( eq $lang nil) $rooSection $lang}}
+        {{- range (where .Site.Pages "Section" $blogType) }}
+            {{- if (and (eq .Type "post") (or (not $category) (eq .Parent.Title $Section.Title))) }}
+            {{- $filteredPages = $filteredPages | append . }}
+            {{- end }}
+        {{- end }}
+        {{- $pageSize := cond (eq .Title "Blog") 9 6}}
+        {{- $pageSize = cond (eq .Title "Sample Reports") 10 $pageSize}}
+        {{- $paginator := .Paginate $filteredPages $pageSize}}
+        {{- .Scratch.Set "paginator" $paginator}}
+        {{- if (findRE `^(Spanish Archives)|(Hebrew Archives)|(Italian Archives)$` .Title) }}
+            {{- $.Scratch.Set "title" .Title}}
+        {{- else if (eq $.Paginator.PageNumber 1)}}
+            {{- $.Scratch.Set "title" (printf "%s" $currentPageTitle ) }}
+        {{- else}}
+            {{- range .Site.Taxonomies.tags }}
+                {{- range $.Paginator.Pages }}
+                    {{- $.Scratch.Set "title" (printf "%s - %v " $currentPageTitle $.Paginator.PageNumber ) }}
+                {{- end }}		
+            {{- end }}
+        {{- end }}
+    {{- end }}
+    {{- partial "head.html" . -}}
+    {{$id := .Params.elementorId }}
+    <body class="home page-template-default page page-id-{{$id}} wp-custom-logo elementor-default elementor-kit-8 {{if $id}} elementor-page elementor-page-{{$id}} {{end}} e--ua-blink e--ua-chrome e--ua-mac e--ua-webkit">
+        {{- partial "header.html" . -}}
+        {{- block "main" . }}{{- end }}
+        {{- partial "footer.html" . -}}
+        {{- partial "script.html" . -}}
+    </body>
+</html>

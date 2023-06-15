@@ -1,0 +1,203 @@
+{{ define "main" }}
+
+{{ $paginator := .Paginate (where .Pages "Type" "post") 10}}
+<div data-elementor-type="archive" data-elementor-id="371" class="elementor elementor-371 elementor-location-archive"
+    data-elementor-settings="[]">
+    <div class="elementor-section-wrap">
+        <section
+            class="elementor-section elementor-top-section elementor-element elementor-element-b659df3 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+            data-id="b659df3" data-element_type="section"
+            data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+            <div class="elementor-background-overlay"></div>
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-row">
+                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-9db2076"
+                        data-id="9db2076" data-element_type="column">
+                        <div class="elementor-column-wrap elementor-element-populated">
+                            <div class="elementor-widget-wrap">
+                                <div class="elementor-element elementor-element-45b4ba5 elementor-widget elementor-widget-theme-archive-title elementor-page-title elementor-widget-heading"
+                                    data-id="45b4ba5" data-element_type="widget"
+                                    data-widget_type="theme-archive-title.default">
+                                    <div class="elementor-widget-container">
+                                        <h1 class="elementor-heading-title elementor-size-default">PBXDom Blog Tag: {{ partial "decode.html" (dict "Value" .Title) }}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section
+            class="elementor-section elementor-top-section elementor-element elementor-element-56b8b60 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+            data-id="56b8b60" data-element_type="section">
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-row">
+                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-ac10e08"
+                        data-id="ac10e08" data-element_type="column">
+                        <div class="elementor-column-wrap elementor-element-populated">
+                            <div class="elementor-widget-wrap">
+                                <div class="elementor-element elementor-element-c5c8be7 elementor-mobile-align-center elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
+                                    data-id="c5c8be7" data-element_type="widget" data-widget_type="icon-list.default">
+                                    <div class="elementor-widget-container">
+                                        <ul class="elementor-icon-list-items">
+                                            <li class="elementor-icon-list-item">
+                                               
+                                                    <span class="elementor-icon-list-icon">
+                                                        <i aria-hidden="true" class="fas fa-home"></i> </span>
+                                                    <span class="elementor-icon-list-text">Tag: {{ partial "decode.html" (dict "Value" .Title) }}</span>
+                                           
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section
+            class="elementor-section elementor-top-section elementor-element elementor-element-15f14ea elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+            data-id="15f14ea" data-element_type="section">
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-row">
+                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-9b3790a"
+                        data-id="9b3790a" data-element_type="column">
+                        <div class="elementor-column-wrap elementor-element-populated">
+                            <div class="elementor-widget-wrap">
+                                <div class="elementor-element elementor-element-988da82 uael-post__content-align-center uael-equal__height-yes elementor-widget elementor-widget-uael-posts"
+                                    data-id="988da82" data-element_type="widget"
+                                    data-settings="{&quot;_animation&quot;:&quot;none&quot;}"
+                                    data-widget_type="uael-posts.business">
+                                    {{ if ne .Paginator.TotalPages 0 }}
+                                    <div class="elementor-widget-container">
+                                        <div class="uael-post__header">
+                                        </div>
+                                        <div class="uael-post__body">
+
+
+                                            <div class="uael-blog-terms-position-above_content uael-post-image-top uael-post-grid uael-posts"
+                                                data-query-type="main" data-structure="normal" data-layout=""
+                                                data-page="371" data-skin="business" data-filter-default=""
+                                                data-offset-top="30">
+
+                                                <div
+                                                    class="uael-post-grid__inner uael-post__columns-3 uael-post__columns-tablet-2 uael-post__columns-mobile-1">
+                                                {{range $paginator.Pages}}
+                                                    <div class="uael-post-wrapper   {{.Section}} ">
+                                                        <div class="uael-post__bg-wrap">
+
+
+                                                            <div class="uael-post__inner-wrap">
+
+                                                                <div class="uael-post__thumbnail">
+                                                                    <a target="_self"
+                                                                        href="{{.RelPermalink}}"
+                                                                        title="{{.Title}}"><img width="1076"
+                                                                            height="706"
+                                                                            src="{{.Params.featured_image}}"
+                                                                            class="attachment-full size-full"
+                                                                            alt="{{.Params.imageAlt}}" loading="lazy"></a>
+                                                                </div>
+
+
+                                                                <div class="uael-post__content-wrap">
+                                                                    <div class="uael-post__terms-wrap"></div>
+                                                                    <h3 class="uael-post__title">
+
+
+                                                                        <a href="{{.RelPermalink}}"
+                                                                            target="_self">
+                                                                            {{.Title}} </a>
+
+                                                                    </h3>
+                                                                    <div class="uael-post__separator-wrap">
+                                                                        <div
+                                                                            class="uael-post__separator uael-post__gradient-separator">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="uael-post__excerpt">
+                                                                        <p>{{.Summary | safeHTML | truncate 150}}</p>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                {{end}}
+                                                   
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="uael-post__footer">
+                                            {{ with $paginator }}
+                                            {{if (gt .TotalPages 1)}}
+                                                {{$currentPage := .PageNumber}}
+                                                {{ $firstPage := index .Pages 0 }}
+                                                {{ $lastPageIndex := sub (len .Pages) 1 }}
+                                                {{ $lastPage := index .Pages $lastPageIndex }}
+
+                                                <nav class="uael-grid-pagination" role="navigation" aria-label="Pagination" data-total="{{.TotalPages}}" 
+                                                {{ if $paginator.HasNext }}
+                                                data-next-page="{{add $currentPage 1}}"
+                                                {{end}}
+                                                >
+                                                    {{ if $paginator.HasPrev }}
+                                                        <a class="page-numbers prev" href="{{ $paginator.Prev.URL }}">« Previous</a>
+                                                    {{end}} 
+                                                    {{ $.Scratch.Set "__paginator.ellipsed" false }}
+                                                    {{ range .Pagers }}
+                                                        {{ $right := sub .TotalPages .PageNumber }}
+                                                        {{ $showNumber := or (le .PageNumber 1) (eq $right 0) }}
+                                                        {{ $showNumber := or $showNumber (and (gt .PageNumber (sub $currentPage ( $.Site.Params.pagination.pagesBetweenActive | default 3 ))) (lt .PageNumber (add $currentPage ( $.Site.Params.pagination.pagesBetweenActive | default 3 ))))  }}
+                                                        {{ if $showNumber }} 
+                                                            {{ $.Scratch.Set "__paginator.ellipsed" false }}
+                                                            {{ $.Scratch.Set "__paginator.shouldEllipse" false }}
+                                                        {{ else }}
+                                                            {{ $.Scratch.Set "__paginator.shouldEllipse" (not ($.Scratch.Get "__paginator.ellipsed") ) }}
+                                                            {{ $.Scratch.Set "__paginator.ellipsed" true }}
+                                                        {{ end }}
+                                            
+                                                        {{ if $showNumber }}
+                                                            {{ if eq .PageNumber $currentPage }}
+                                                            <span aria-current="page" class="page-numbers current"><span
+                                                                class="elementor-screen-only">Page</span>{{.PageNumber}}</span>
+                                                            {{else}}
+                                                                <a class="page-numbers" href="{{ .URL }}">{{ .PageNumber }} <span class="elementor-screen-only">(current)</span></a>
+                                                            {{end}}
+                                                        {{ else if ($.Scratch.Get "__paginator.shouldEllipse") }}
+                                                            <span class="ellipsis" aria-hidden="true">&hellip;</span>
+                                                        {{ end }}
+                                                    {{ end }}
+                                                    {{ if $paginator.HasNext }}      
+                                                        <a class="page-numbers next" href="{{ $paginator.Next.URL }}">Next »</a>
+                                                    {{end}}
+                                                </nav>
+                                            {{end}}
+                                            {{end}}
+                                        </div>
+                                    </div>
+                                    {{else}}
+                                    <div class="elementor-widget-container">
+                                        <div class="uael-post__grid-empty">
+                                            <p>Sorry, we couldn't find any posts. Please try a different search.</p>
+                                        </div>
+                                    </div>
+                                    {{end}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{{end}}

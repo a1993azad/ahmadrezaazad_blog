@@ -1,0 +1,255 @@
+{{ define "main" }}
+<div data-elementor-type="single" data-elementor-id="230"
+    class="elementor elementor-230 elementor-location-single post-4886 post type-post status-publish format-standard has-post-thumbnail hentry category-engineering tag-3cx tag-3cx-cloud-report tag-3cx-dashboard tag-3cx-phone-system tag-3cx-reporting tag-sip-server tag-voip"
+    data-elementor-settings="[]">
+    <div class="elementor-section-wrap">
+        <section
+            class="elementor-section elementor-top-section elementor-element elementor-element-3955a9d elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+            data-id="3955a9d" data-element_type="section">
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-row">
+                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-1fe005d"
+                        data-id="1fe005d" data-element_type="column" id="single-post-content">
+                        <div class="elementor-column-wrap elementor-element-populated">
+                            <div class="elementor-widget-wrap">
+                                <div class="elementor-element elementor-element-b8ab667 elementor-widget elementor-widget-spacer"
+                                    data-id="b8ab667" data-element_type="widget" data-widget_type="spacer.default">
+                                    <div class="elementor-widget-container">
+                                        <div class="elementor-spacer">
+                                            <div class="elementor-spacer-inner"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-dd13b4f elementor-widget elementor-widget-theme-post-title elementor-page-title elementor-widget-heading"
+                                    data-id="dd13b4f" data-element_type="widget"
+                                    data-widget_type="theme-post-title.default">
+                                    <div class="elementor-widget-container">
+                                        <h1 class="elementor-heading-title elementor-size-default">
+                                            {{.Title}}
+                                        </h1>
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-7257813 elementor-align-center elementor-widget elementor-widget-post-info"
+                                    data-id="7257813" data-element_type="widget" data-widget_type="post-info.default">
+                                    <div class="elementor-widget-container">
+                                        <ul
+                                            class="elementor-inline-items elementor-icon-list-items elementor-post-info">
+                                            <li class="elementor-icon-list-item elementor-repeater-item-0eda928 elementor-inline-item"
+                                                itemprop="about">
+                                                <span class="elementor-icon-list-icon">
+                                                    <i aria-hidden="true" class="fas fa-tags"></i> </span>
+                                                <span
+                                                    class="elementor-icon-list-text elementor-post-info__item elementor-post-info__item--type-terms">
+                                                    <span class="elementor-post-info__terms-list">
+                                                        <a href="{{.Parent.RelPermalink}}"
+                                                            class="elementor-post-info__terms-list-item">{{replace .Parent.Title "Blog - " ""}}</a>
+                                                    </span>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-4002518 elementor-widget elementor-widget-spacer"
+                                    data-id="4002518" data-element_type="widget" data-widget_type="spacer.default">
+                                    <div class="elementor-widget-container">
+                                        <div class="elementor-spacer">
+                                            <div class="elementor-spacer-inner"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-6b60338 elementor-widget elementor-widget-theme-post-featured-image elementor-widget-image"
+                                    data-id="6b60338" data-element_type="widget"
+                                    data-widget_type="theme-post-featured-image.default">
+                                    <div class="elementor-widget-container">
+                                        <div class="elementor-image">
+                                            <img width="800" height="600"
+                                                src="{{replaceRE `\-\d*x\d*\.` "." .Params.featured_image}}"
+                                                class="attachment-full size-full"
+                                                alt="{{.Params.imageAlt}}" loading="lazy"
+                                                sizes="(max-width: 800px) 100vw, 800px">
+                                        </div>
+                                    </div>
+                                </div>
+                                <section
+                                    class="elementor-section elementor-inner-section elementor-element elementor-element-50b4d9d elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+                                    data-id="50b4d9d" data-element_type="section">
+                                    <div class="elementor-container elementor-column-gap-default">
+                                        <div class="elementor-row">
+                                            <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-4147763"
+                                                data-id="4147763" data-element_type="column">
+                                                <div class="elementor-column-wrap">
+                                                    <div class="elementor-widget-wrap">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-d259277"
+                                                data-id="d259277" data-element_type="column">
+                                                <div class="elementor-column-wrap elementor-element-populated">
+                                                    <div class="elementor-widget-wrap">
+                                                        <div class="elementor-element elementor-element-37b6c62 elementor-author-box--avatar-yes elementor-author-box--name-yes elementor-widget elementor-widget-author-box"
+                                                            data-id="37b6c62" data-element_type="widget"
+                                                            data-widget_type="author-box.default">
+                                                            <div class="elementor-widget-container">
+                                                                {{- range .Params.authors }}
+                                                                {{- with $.Site.GetPage "taxonomyTerm" (printf "authors/%s" (urlize .)) }}
+                                                                <div class="elementor-author-box">
+                                                                    <div 
+                                                                        class="elementor-author-box__avatar">
+                                                                        <img src="{{.Params.avatar}}"
+                                                                            alt="{{.Params.name}}">
+                                                                    </div>
+
+                                                                    <div class="elementor-author-box__text">
+                                                                        <div>
+                                                                            <div class="elementor-author-box__name">
+                                                                                {{.Params.name}} </div>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                                  
+                                                                {{ end }}
+                                                              {{ end }}
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-1e736f8"
+                                                data-id="1e736f8" data-element_type="column">
+                                                <div class="elementor-column-wrap">
+                                                    <div class="elementor-widget-wrap">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-81c15b2"
+                                                data-id="81c15b2" data-element_type="column">
+                                                <div class="elementor-column-wrap elementor-element-populated">
+                                                    <div class="elementor-widget-wrap">
+                                                        <div class="elementor-element elementor-element-390588e elementor-widget elementor-widget-shortcode"
+                                                            data-id="390588e" data-element_type="widget"
+                                                            data-widget_type="shortcode.default">
+                                                            <div class="elementor-widget-container">
+                                                                <div class="elementor-shortcode">
+                                                                    {{$readTimeText := replaceRE `<|(\d*)|>` "" .Params.readTime }}
+                                                                    {{$count := replaceRE `[a-zA-Z\s]` "" .Params.readTime }}
+                                                                    <span
+                                                                        class="span-reading-time rt-reading-time"><span
+                                                                            class="rt-label rt-prefix"></span> <span
+                                                                            class="rt-time"> {{$count}}</span> <span
+                                                                            class="rt-label rt-postfix"></span></span>
+                                                                   {{$readTimeText}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <div class="elementor-element elementor-element-7c5a1c5 elementor-widget-divider--view-line elementor-widget elementor-widget-divider"
+                                    data-id="7c5a1c5" data-element_type="widget" data-widget_type="divider.default">
+                                    <div class="elementor-widget-container">
+                                        <div class="elementor-divider">
+                                            <span class="elementor-divider-separator">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-39c9cb9 elementor-widget elementor-widget-theme-post-content"
+                                    data-id="39c9cb9" data-element_type="widget" id="postarea"
+                                    data-widget_type="theme-post-content.default">
+                                    <div class="elementor-widget-container">
+                                        {{.Content | safeHTML}}
+                                    </div>
+                                </div>
+                                {{ with .Params.tags }}
+                                <div class="elementor-element elementor-element-9ee09bf elementor-widget elementor-widget-post-info"
+                                    data-id="9ee09bf" data-element_type="widget" data-widget_type="post-info.default">
+                                    <div class="elementor-widget-container">
+                                        <ul
+                                            class="elementor-inline-items elementor-icon-list-items elementor-post-info">
+                                            <li class="elementor-icon-list-item elementor-repeater-item-26f995c elementor-inline-item"
+                                                itemprop="about">
+                                                <span class="elementor-icon-list-icon">
+                                                    <i aria-hidden="true" class="fas fa-tags"></i> </span>
+                                                <span
+                                                    class="elementor-icon-list-text elementor-post-info__item elementor-post-info__item--type-terms">
+                                                    <span class="elementor-post-info__terms-list">
+                                                       
+                                                        {{$len := len .}}
+                                                            {{ range $index, $item:= .}}
+                                                                <a href="/tag/{{ $item | urlize }}/" rel="tag">{{ partial "decode.html" (dict "Value" $item) }}</a>
+                                                                {{if lt $index (sub $len 1) }}
+                                                                , 
+                                                                {{end}}
+                                                            {{end}}
+                                                      
+                                                      
+                                                    </span>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                {{end}}
+                                <div class="elementor-element elementor-element-b41f0e9 elementor-widget elementor-widget-spacer"
+                                    data-id="b41f0e9" data-element_type="widget" data-widget_type="spacer.default">
+                                    <div class="elementor-widget-container">
+                                        <div class="elementor-spacer">
+                                            <div class="elementor-spacer-inner"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-b48ebc3 elementor-author-box--avatar-yes elementor-author-box--name-yes elementor-author-box--biography-yes elementor-author-box--link-no elementor-widget elementor-widget-author-box"
+                                    data-id="b48ebc3" data-element_type="widget" data-widget_type="author-box.default">
+                                    <div class="elementor-widget-container">
+                                        {{ range .Params.authors }}
+                                            {{ with $.Site.GetPage "taxonomyTerm" (printf "authors/%s" (urlize .)) }}
+                                            <div class="elementor-author-box">
+                                                <div
+                                                    class="elementor-author-box__avatar">
+                                                    <img src="{{.Params.avatar}}"
+                                                        alt="{{.Params.name}}">
+                                                </div>
+
+                                                <div class="elementor-author-box__text">
+                                                    <div>
+                                                        <span class="elementor-author-box__name">
+                                                            {{.Params.name}}</span>
+                                                    </div>
+    
+                                                    <div class="elementor-author-box__bio">
+                                                        {{.Params.bio | safeHTML}}</div>
+
+
+                                                </div>
+                                            </div>
+                                                
+                                            {{ end }}
+                                        {{ end }}
+                                        
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-750f7a5 elementor-widget elementor-widget-spacer"
+                                    data-id="750f7a5" data-element_type="widget" data-widget_type="spacer.default">
+                                    <div class="elementor-widget-container">
+                                        <div class="elementor-spacer">
+                                            <div class="elementor-spacer-inner"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{{ partial "relatedPosts/type1.html" . }}
+    </div>
+</div>
+{{ partial "socializer.html" . }}
+{{end}}

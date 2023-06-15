@@ -1,0 +1,51 @@
+{{ define "main" }}
+
+<div data-elementor-type="wp-page" data-elementor-id="147" class="elementor elementor-147" data-elementor-settings="[]">
+    <div class="elementor-inner">
+        <div class="elementor-section-wrap">
+            <section
+                class="elementor-section elementor-top-section elementor-element elementor-element-55df727 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+                data-id="55df727" data-element_type="section"
+                data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                <div class="elementor-background-overlay"></div>
+                <div class="elementor-container elementor-column-gap-default">
+                    <div class="elementor-row">
+                        <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-24e49fb"
+                            data-id="24e49fb" data-element_type="column">
+                            <div class="elementor-column-wrap elementor-element-populated">
+                                <div class="elementor-widget-wrap">
+                                    <div class="elementor-element elementor-element-a2cd7d7 elementor-widget elementor-widget-heading"
+                                        data-id="a2cd7d7" data-element_type="widget" data-widget_type="heading.default">
+                                        <div class="elementor-widget-container">
+                                            <h1 class="elementor-heading-title elementor-size-default">Blog</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section
+                class="elementor-section elementor-top-section elementor-element elementor-element-bd3b84d elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+                data-id="bd3b84d" data-element_type="section">
+                <div class="elementor-container elementor-column-gap-default">
+                    <div class="elementor-row">
+                        <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-fe6ba18"
+                            data-id="fe6ba18" data-element_type="column">
+                            <div class="elementor-column-wrap elementor-element-populated">
+                                <div class="elementor-widget-wrap">
+                                   
+                                    {{ partial "blog/categories.html" . }}
+                                    {{ partial "blog/posts.html" . }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+{{end}}

@@ -1,0 +1,49 @@
+{{ $paginator := .Paginator }}
+{{ with $paginator }}
+{{if (ne .TotalPages 1)}}
+<nav class="elementor-pagination" role="navigation" aria-label="Pagination">
+    {{ if .HasPrev }}
+        <a class="page-numbers prev" href="{{ .Prev.URL }}">« Previous</a>
+    {{else}}
+        <span class="page-numbers prev">« Previous</span>
+    {{end}}
+   
+        {{$currentPage := .PageNumber}}
+        {{ $firstPage := index .Pages 0 }}
+        {{ $lastPageIndex := sub (len .Pages) 1 }}
+        {{ $lastPage := index .Pages $lastPageIndex }}
+
+
+        {{ $.Scratch.Set "__paginator.ellipsed" false }}
+        {{ range .Pagers }}
+            {{ $right := sub .TotalPages .PageNumber }}
+            {{ $showNumber := or (le .PageNumber 1) (eq $right 0) }}
+            {{ $showNumber := or $showNumber (and (gt .PageNumber (sub $currentPage ( $.Site.Params.pagination.pagesBetweenActive | default 3 ))) (lt .PageNumber (add $currentPage ( $.Site.Params.pagination.pagesBetweenActive | default 3 ))))  }}
+            {{ if $showNumber }} 
+                {{ $.Scratch.Set "__paginator.ellipsed" false }}
+                {{ $.Scratch.Set "__paginator.shouldEllipse" false }}
+            {{ else }}
+                {{ $.Scratch.Set "__paginator.shouldEllipse" (not ($.Scratch.Get "__paginator.ellipsed") ) }}
+                {{ $.Scratch.Set "__paginator.ellipsed" true }}
+            {{ end }}
+
+            {{ if $showNumber }}
+                {{ if eq .PageNumber $currentPage }}
+                <span aria-current="page" class="page-numbers current"><span
+                    class="elementor-screen-only">Page</span>{{.PageNumber}}</span>
+                {{else}}
+                    <a class="page-numbers" href="{{ .URL }}">{{ .PageNumber }} <span class="elementor-screen-only">(current)</span></a>
+                {{end}}
+            {{ else if ($.Scratch.Get "__paginator.shouldEllipse") }}
+                <span class="ellipsis" aria-hidden="true">&hellip;</span>
+            {{ end }}
+        {{ end }}
+
+    {{ if .HasNext }}      
+        <a class="page-numbers next" href="{{ .Next.URL }}">Next »</a>
+    {{else}}
+    <span class="page-numbers next">Next »</span>
+    {{end}}
+</nav>
+{{end}}
+{{ end }}

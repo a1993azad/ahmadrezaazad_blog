@@ -1,0 +1,76 @@
+<section class="elementor-section elementor-top-section elementor-element elementor-element-198c67cc elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="198c67cc" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;none&quot;}">
+    <div class="elementor-container elementor-column-gap-default">
+        <div class="elementor-row">
+            <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-31a56f8e" data-id="31a56f8e" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;none&quot;}">
+                <div class="elementor-column-wrap elementor-element-populated">
+                    <div class="elementor-widget-wrap">
+                        <div class="elementor-element elementor-element-3f87a9e4 elementor-widget elementor-widget-heading" data-id="3f87a9e4" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <h2 class="elementor-heading-title elementor-size-default">You Might Also Like</h2> </div>
+                        </div>
+                        <div class="elementor-element elementor-element-6f92ac8 uael-post__link-complete-yes uael-equal__height-yes elementor-widget elementor-widget-uael-posts" data-id="6f92ac8" data-element_type="widget" data-widget_type="uael-posts.classic">
+                            <div class="elementor-widget-container">
+                                <div class="uael-post__header">
+                                </div>
+                                <div class="uael-post__body">
+
+
+                                    <div class="uael-blog-terms-position- uael-post-image-top uael-post-grid uael-posts" data-query-type="custom" data-structure="normal" data-layout="" data-page="9718" data-skin="classic" data-filter-default="" data-offset-top="30">
+
+                                        <div class="uael-post-grid__inner uael-post__columns-3 uael-post__columns-tablet-2 uael-post__columns-mobile-1">
+
+                                            {{ with .Params.relatedTo }}
+                                                {{ range . }}
+                                                    {{ with site.GetPage . }}
+                                                        <div class="uael-post-wrapper    ">
+                                                            <div class="uael-post__bg-wrap">
+
+                                                                <a href="{{.RelPermalink}}" target="_self" class="uael-post__complete-box-overlay"></a>
+
+                                                                <div class="uael-post__inner-wrap">
+
+                                                                    <div class="uael-post__thumbnail">
+                                                                        <a target="_self" href="{{.RelPermalink}}" title="{{.Title}}">
+                                                                            <img 
+                                                                            width="760" 
+                                                                            height="433"
+                                                                             src="{{.Params.featured_image}}"
+                                                                              class="attachment-full size-full" 
+                                                                              alt="{{.Params.imageAlt}}"
+                                                                                loading="lazy">
+                                                                            </a>
+                                                                    </div>
+
+
+                                                                    <div class="uael-post__content-wrap">
+                                                                        <h3 class="uael-post__title">
+                                                                            <a href="{{.RelPermalink}}" target="_self">
+                                                                                {{.Title}}
+                                                                            </a>
+                                                                        </h3>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+                                                    {{end}}
+                                                {{end}}
+                                            {{end}}
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="uael-post__footer">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

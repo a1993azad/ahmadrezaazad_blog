@@ -1,0 +1,28 @@
+
+{{ with .Params.tags }}
+<div class="elementor-element elementor-element-9ee09bf elementor-widget elementor-widget-post-info"
+    data-id="9ee09bf" data-element_type="widget" data-widget_type="post-info.default">
+    <div class="elementor-widget-container">
+        <ul
+            class="elementor-inline-items elementor-icon-list-items elementor-post-info">
+            <li class="elementor-icon-list-item elementor-repeater-item-26f995c elementor-inline-item"
+                itemprop="about">
+                <span class="elementor-icon-list-icon">
+                    <i aria-hidden="true" class="fas fa-tags"></i> </span>
+                <span
+                    class="elementor-icon-list-text elementor-post-info__item elementor-post-info__item--type-terms">
+                    <span class="elementor-post-info__terms-list">
+                        
+                        {{$len := len .}}
+                            {{ range $index, $item:= .}}
+                                <a href="/tag/{{ $item | urlize }}/" rel="tag">{{ partial "decode.html" (dict "Value" $item) }}</a>{{if lt $index (sub $len 1) }}, {{end}}
+                            {{end}}
+                    
+                        
+                    </span>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+{{end}}

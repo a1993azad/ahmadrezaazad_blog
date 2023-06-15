@@ -1,0 +1,76 @@
+<div class="elementor-element elementor-element-988da82 uael-post__content-align-center uael-equal__height-yes elementor-widget elementor-widget-uael-posts"
+                                    data-id="988da82" data-element_type="widget"
+                                    data-settings="{&quot;_animation&quot;:&quot;none&quot;}"
+                                    data-widget_type="uael-posts.business">
+                                    <div class="elementor-widget-container">
+                                        <div class="uael-post__header">
+                                        </div>
+                                        <div class="uael-post__body">
+
+
+                                            <div class="uael-blog-terms-position-above_content uael-post-image-top uael-post-grid uael-posts"
+                                                data-query-type="main" data-structure="normal" data-layout=""
+                                                data-page="371" data-skin="business" data-filter-default=""
+                                                data-offset-top="30">
+
+                                                <div
+                                                    class="uael-post-grid__inner uael-post__columns-3 uael-post__columns-tablet-2 uael-post__columns-mobile-1">
+                                               
+                                                    {{- $paginator := .Scratch.Get "paginator"}}
+
+                                                    {{ range $paginator.Pages }} 
+                                                        {{- partial "sample-reports/article.html" . -}}
+                                                    {{ end }}
+                                                   
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="uael-post__footer">
+                                            {{ $paginator := .Paginator }}
+                                            {{ with $paginator }}
+                                                {{$currentPage := .PageNumber}}
+                                                {{ $firstPage := index .Pages 0 }}
+                                                {{ $lastPageIndex := sub (len .Pages) 1 }}
+                                                {{ $lastPage := index .Pages $lastPageIndex }}
+                                                <nav class="uael-grid-pagination" role="navigation" aria-label="Pagination" data-total="{{.TotalPages}}" 
+                                                {{ if $paginator.HasNext }}
+                                                data-next-page="{{add $currentPage 1}}"
+                                                {{end}}
+                                                >
+                                                    {{ if $paginator.HasPrev }}
+                                                        <a class="page-numbers prev" href="{{ $paginator.Prev.URL }}">« Previous</a>
+                                                    {{end}} 
+                                                    {{ $.Scratch.Set "__paginator.ellipsed" false }}
+                                                    {{ range .Pagers }}
+                                                        {{ $right := sub .TotalPages .PageNumber }}
+                                                        {{ $showNumber := or (le .PageNumber 1) (eq $right 0) }}
+                                                        {{ $showNumber := or $showNumber (and (gt .PageNumber (sub $currentPage ( $.Site.Params.pagination.pagesBetweenActive | default 3 ))) (lt .PageNumber (add $currentPage ( $.Site.Params.pagination.pagesBetweenActive | default 3 ))))  }}
+                                                        {{ if $showNumber }} 
+                                                            {{ $.Scratch.Set "__paginator.ellipsed" false }}
+                                                            {{ $.Scratch.Set "__paginator.shouldEllipse" false }}
+                                                        {{ else }}
+                                                            {{ $.Scratch.Set "__paginator.shouldEllipse" (not ($.Scratch.Get "__paginator.ellipsed") ) }}
+                                                            {{ $.Scratch.Set "__paginator.ellipsed" true }}
+                                                        {{ end }}
+                                            
+                                                        {{ if $showNumber }}
+                                                            {{ if eq .PageNumber $currentPage }}
+                                                            <span aria-current="page" class="page-numbers current"><span
+                                                                class="elementor-screen-only">Page</span>{{.PageNumber}}</span>
+                                                            {{else}}
+                                                                <a class="page-numbers" href="{{ .URL }}">{{ .PageNumber }} <span class="elementor-screen-only">(current)</span></a>
+                                                            {{end}}
+                                                        {{ else if ($.Scratch.Get "__paginator.shouldEllipse") }}
+                                                            <span class="ellipsis" aria-hidden="true">&hellip;</span>
+                                                        {{ end }}
+                                                    {{ end }}
+                                                    {{ if $paginator.HasNext }}      
+                                                        <a class="page-numbers next" href="{{ $paginator.Next.URL }}">Next »</a>
+                                                    {{end}}
+                                                </nav>
+                                            {{end}}
+                                        </div>
+                                    </div>
+                                </div>

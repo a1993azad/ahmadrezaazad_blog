@@ -1,0 +1,35 @@
+{{- $url := .Value}}
+{{- $url = print (replace $url "%20" ` ` )}}
+{{- $url = print (replace $url "%21" `!` )}}
+{{- $url = print (replace $url "%22" `"` )}}
+{{- $url = print (replace $url "%23" `#` )}}
+{{- $url = print (replace $url "%24" `$` )}}
+{{- $url = print (replace $url "%25" `%` )}}
+{{- $url = print (replace $url "%26" `&` )}}
+{{- $url = print (replace $url "%27" `'` )}}
+{{- $url = print (replace $url "%28" `(` )}}
+{{- $url = print (replace $url "%29" `)` )}}
+{{- $url = print (replace $url "%2A" `*` )}}
+{{- $url = print (replace $url "%2B" `+` )}}
+{{- $url = print (replace $url "%2C" `,` )}}
+{{- $url = print (replace $url "%2D" `-` )}}
+{{- $url = print (replace $url "%2E" `.` )}}
+{{- $url = print (replace $url "%2F" `/` )}}
+{{- $url = print (replace $url "%3A" `:` )}}
+{{- $url = print (replace $url "%3B" `;` )}}
+{{- $url = print (replace $url "%3C" `<` )}}
+{{- $url = print (replace $url "%3D" `=` )}}
+{{- $url = print (replace $url "%3E" `>` )}}
+{{- $url = print (replace $url "%3F" `?` )}}
+{{- $url = print (replace $url "%40" `@` )}}
+{{- $url = print (replace $url "%5B" `[` )}}
+{{- $url = print (replace $url "%5C" `\` )}}
+{{- $url = print (replace $url "%5D" `]` )}}
+{{- $url = print (replace $url "%5E" `^` )}}
+{{- $url = print (replace $url "%5F" `_` )}}
+{{- $url = print (replace $url "%60" "`" )}}
+{{- $url = print (replace $url "%7B" `{` )}}
+{{- $url = print (replace $url "%7C" `|` )}}
+{{- $url = print (replace $url "%7D" `}` )}}
+{{- $url = print (replace $url "%7E" `~` )}}
+{{- $url | safeHTML}}

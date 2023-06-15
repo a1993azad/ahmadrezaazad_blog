@@ -1,0 +1,81 @@
+baseURL = 'https://www.pbxdom.com/'
+languageCode = 'en-us'
+title = 'PBXDom'
+theme = 'pbxdom'
+paginate = 9
+paginatePath = ""
+enableRobotsTXT= true
+[params]
+  Description = 'PBXDom is a real-time call analytics tool that’s easy to set up, offers customizable dashboards for dozens of use cases, and connects your phone system to the cloud. '
+[taxonomies]
+  tag = "tags"
+[permalinks] 
+  tags = "/tag/:slug/"
+[menu]
+[[menu.main]]
+  name = 'Products'
+  weight = 10
+[[menu.main]]
+  name = 'Analytics & Monitoring'
+  pageRef = '/call-analytics-monitoring'
+  parent = 'Products'
+  weight = 1
+[[menu.main]]
+  name = 'Emergency 911 & Alert'
+  pageRef = '/emergency-911-alert'
+  parent = 'Products'
+  weight = 2
+[[menu.main]]
+  name = 'Telecom Expenses & Call Accounting Software'
+  pageRef = '/telecom-expense-call-accounting-software'
+  parent = 'Products'
+  weight = 3
+[[menu.main]]
+  name = 'Integrations'
+  pageRef = '/integrations-pbx-uc-systems'
+  weight = 20
+[[menu.main]]
+  name = 'Pricing'
+  pageRef = '/pricing'
+  weight = 30
+[[menu.main]]
+  name = 'Resources'
+  weight = 40
+[[menu.main]]
+  name = 'Blog'
+  pageRef = '/blog'
+  parent = 'Resources'
+  weight = 1
+[[menu.main]]
+  name = 'Sign In'
+  outline = true
+  url = 'https://v3.pbxdom.com/login'
+  weight = 50
+  [menu.main.params]
+    rel = 'external'
+[[menu.main]]
+  name = 'START FREE TRIAL'
+  outline = true
+  url = 'https://v3.pbxdom.com/signup'
+  weight = 60
+  [menu.main.params]
+    rel = 'external'
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+[outputFormats.HTML]
+  mediaType = "text/html"
+  isPlainText = true
+
+[outputFormats.RSS]
+  mediatype = "application/rss+xml"
+  baseName = "rss"
+
+[params.pagination]
+    # These are all optional and default to true
+    showBeginEnd = true       # If false it will hide the First/Previous/Next/Last if it evaluates to false
+    showPrevious = true       # If false it will hide the previous button
+    showNext = true                          
+    showPageNumbers = true    # If false it will hide the numbering of pages
+    pagesBetweenActive = 3    # Shows how many page numbers to show between the active page - it defaults to 3

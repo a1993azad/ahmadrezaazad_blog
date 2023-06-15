@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en-US">
+    {{ $paginator := .Paginate (where .Pages "Type" "post") 10}}
+    {{- $currentTag := .Title }}
+    {{- if (eq $.Paginator.PageNumber 1)}}
+    {{- $.Scratch.Set "title" (printf "%s Archives" $currentTag ) }}
+    {{- else}}
+        {{- range .Site.Taxonomies.tags }}
+            {{- range $.Paginator.Pages }}
+                {{- $.Scratch.Set "title" (printf "%s Archives - Page %v of %v " $currentTag $.Paginator.PageNumber $.Paginator.TotalPages ) }}
+            {{- end }}		
+        {{- end }}
+    {{- end }}
+    {{- $.Scratch.Set "description" (print .Page.Title " - " .Site.Title)}}
+    {{- .Page.Scratch.Set "customCss" (slice "/css/post-371.css") -}}
+    {{- partial "head.html" . -}}
+    {{$id := print (cond (ne .Params.elementorId nil) .Params.elementorId "137")}}
+    {{.Scratch.Set ".Params.elementorId" $id}}
+    <body class="home page-template-default page page-id-{{$id}} wp-custom-logo elementor-default elementor-kit-8 {{if $id}} elementor-page elementor-page-{{$id}} {{end}} e--ua-blink e--ua-chrome e--ua-mac e--ua-webkit">
+        {{- partial "header.html" . -}}
+        {{- block "main" . }}{{- end }}
+        {{- partial "footer.html" . -}}
+        {{- partial "script.html" . -}}
+    </body>
+</html>

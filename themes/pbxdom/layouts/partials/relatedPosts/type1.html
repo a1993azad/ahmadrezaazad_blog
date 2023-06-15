@@ -1,0 +1,68 @@
+<section
+class="elementor-section elementor-top-section elementor-element elementor-element-198c67cc elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+data-id="198c67cc" data-element_type="section"
+data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;none&quot;}">
+<div class="elementor-container elementor-column-gap-default">
+    <div class="elementor-row">
+        <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-31a56f8e"
+            data-id="31a56f8e" data-element_type="column"
+            data-settings="{&quot;animation&quot;:&quot;none&quot;}">
+            <div class="elementor-column-wrap elementor-element-populated">
+                <div class="elementor-widget-wrap">
+                    <div class="elementor-element elementor-element-3f87a9e4 elementor-widget elementor-widget-heading"
+                        data-id="3f87a9e4" data-element_type="widget" data-widget_type="heading.default">
+                        <div class="elementor-widget-container">
+                            <h2 class="elementor-heading-title elementor-size-default">You Might Also Like
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="elementor-element elementor-element-a4f31f6 elementor-grid-3 elementor-grid-tablet-2 elementor-grid-mobile-1 elementor-posts--thumbnail-top elementor-card-shadow-yes elementor-posts__hover-gradient elementor-widget elementor-widget-posts"
+                        data-id="a4f31f6" data-element_type="widget"
+                        data-settings="{&quot;cards_columns&quot;:&quot;3&quot;,&quot;cards_columns_tablet&quot;:&quot;2&quot;,&quot;cards_columns_mobile&quot;:&quot;1&quot;,&quot;cards_row_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:35,&quot;sizes&quot;:[]},&quot;cards_row_gap_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;cards_row_gap_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}"
+                        data-widget_type="posts.cards">
+                        <div class="elementor-widget-container">
+                            <div
+                                class="elementor-posts-container elementor-posts elementor-posts--skin-cards elementor-grid elementor-has-item-ratio">
+                                {{ with .Params.relatedTo }}
+                                    {{ range . }}
+                                        {{ with site.GetPage . }}
+                                        <article
+                                        class="elementor-post elementor-grid-item post-5335 post type-post status-publish format-standard has-post-thumbnail hentry category-engineering tag-cisco tag-cucm tag-media-protocol tag-osi tag-qos tag-rctp tag-rtp tag-rtp-packet tag-signaling-protocol tag-tcp-ip tag-voip tag-voip-network">
+                                        <div class="elementor-post__card">
+                                            <a class="elementor-post__thumbnail__link"
+                                                href="{{.RelPermalink}}">
+                                                <div class="elementor-post__thumbnail"><img width="300"
+                                                        height="225"
+                                                        src="{{.Params.featured_image}}"
+                                                        class="attachment-medium size-medium"
+                                                        alt="{{.Params.imageAlt}}"
+                                                        decoding="async"
+                                                        loading="lazy"
+                                                        sizes="(max-width: 300px) 100vw, 300px"></div>
+                                            </a>
+                                            <div class="elementor-post__text">
+                                                <h3 class="elementor-post__title">
+                                                    <a
+                                                        href="{{.RelPermalink}}">
+                                                        {{.Title}}
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </article>
+                                        {{ end }}
+                                    {{ end }}
+                                {{ end }}
+                               
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>

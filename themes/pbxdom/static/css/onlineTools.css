@@ -1,0 +1,6 @@
+@media(max-width: 991px) {
+    .ml__item{
+        min-width: 90%;
+        margin: 10px 5%;
+    }
+}

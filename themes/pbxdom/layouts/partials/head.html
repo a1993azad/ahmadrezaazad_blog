@@ -1,0 +1,157 @@
+<head>
+  {{ $title := print .Title " - " .Site.Title}} 
+  {{- $forcedTitle := .Page.Scratch.Get "title"}}
+  {{- $forcedDescription := .Page.Scratch.Get "description"}}
+  {{- if $forcedTitle}}
+  {{- $title = print $forcedTitle " - " .Site.Title}}
+  {{- end}}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="profile" href="http://gmpg.org/xfn/11" />
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  />
+	<meta name="ahrefs-site-verification" content="5745f7f83e41f93cf76688f7e3485b2acb41e447bd4e2d3fed68c9c9d87f1e59">
+
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto%20Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CCabin%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7COpen%20Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CFira%20Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto%20Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CCabin%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7COpen%20Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CFira%20Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap" media="print" onload="this.media='all'" /><noscript><link rel="preload" href="https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto%20Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CCabin%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7COpen%20Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CFira%20Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap" data-rocket-async="style" as="style" onload="this.onload=null;this.rel='stylesheet'" /></noscript>
+</noscript>
+{{ $description := print (cond (and (ne .Params.description "undefined") (ne .Params.description nil)) .Params.description .Site.Params.Description)  }}
+{{if $forcedDescription}}
+{{$description = $forcedDescription}}
+{{end}}
+{{- $ogLocale := print (cond (and (ne (index .Params "og:locale") "undefined") (ne (index .Params "og:locale") nil)) (index .Params "og:locale") "en_US") }}
+{{- $ogType := print (cond (and (ne (index .Params "og:type") "undefined") (ne (index .Params "og:type") nil)) (index .Params "og:type") "website") }}
+{{- $ogImage := print (cond (and (ne (index .Params "og:image") "undefined") (ne (index .Params "og:image") nil)) (index .Params "og:image") ("/wp-content/uploads/2021/04/P1-Devises-30-3-2021-1.png" )) }}
+{{- $ogImageWidth := index .Params "og:image:width" }}
+{{- $ogImageHeight := index .Params "og:image:height" }}
+{{- $ogTitle := print (cond (and (ne (index .Params "og:title") "undefined") (ne (index .Params "og:title") nil)) (index .Params "og:title") $title) }}
+{{- $ogDescription := print (cond (and (ne (index .Params "og:description") "undefined") (ne (index .Params "og:description") nil)) (index .Params "og:description") $description) }}
+{{- $ogURL := print (cond (and (ne (index .Params "og:url") "undefined") (ne (index .Params "og:url") nil)) (index .Params "og:url") (.RelPermalink | absURL)) }}
+{{- $ogURLLastChar := substr $ogURL -1}}
+{{- $ogURL = print (cond (eq $ogURLLastChar "/") $ogURL  (print $ogURL "/"))}}
+{{- $ogSiteName := print (cond (and (ne (index .Params "og:site_name") "undefined") (ne (index .Params "og:site_name") nil)) (index .Params "og:site_name") "PBXDom") }}
+{{- $articlePublisher := print (cond (and (ne (index .Params "article:publisher") "undefined") (ne (index .Params "article:publisher") nil)) (index .Params "article:publisher") "https://www.facebook.com/pbxdom") }}
+{{- $articleModifiedTime :=  cond (and (ne (index .Params "article:modified_time") "undefined") (ne (index .Params "article:modified_time") nil)) (index .Params "article:modified_time") "2021-06-12T20:38:25+00:00" }}
+{{- $articlePublishedTime := index .Params "article:published_time" }}
+{{- $twitterCard := print (cond (and (ne (index .Params "twitter:card") "undefined") (ne (index .Params "twitter:card") nil)) (index .Params "twitter:card") "summary_large_image") }}
+{{- $twitterSite := print (cond (and (ne (index .Params "twitter:site") "undefined") (ne (index .Params "twitter:site") nil)) (index .Params "twitter:site") "@pbxdom") }}
+{{- $twitterLabel1 := print (cond (and (ne (index .Params "twitter:label1") "undefined") (ne (index .Params "twitter:label1") nil)) (index .Params "twitter:label1") "Est. reading time") }}
+{{- $twitterData1 := print (cond (and (ne (index .Params "twitter:data1") "undefined") (ne (index .Params "twitter:data1") nil)) (index .Params "twitter:data1") "5 minutes") }}
+{{- $twitterLabel2 := index .Params "twitter:label1" }}
+{{- $twitterData2 := index .Params "twitter:data2" -}}
+
+  <meta
+    name="description"
+    content="{{ partial "decode.html" (dict "Value" $description) }}"
+  />
+  <link rel="canonical" href="{{ .RelPermalink | absURL }}" />
+  <meta property="og:locale" content="{{$ogLocale}}" />
+  <meta property="og:type" content="{{$ogType}}" />
+  <meta property="og:title" content="{{ partial "decode.html" (dict "Value" $ogTitle) }}" />
+  <meta
+    property="og:description"
+    content="{{ partial "decode.html" (dict "Value" $ogDescription) }}"
+  />
+  <meta property="og:url" content="{{ $ogURL }}" />
+  <meta property="og:site_name" content="{{ $ogSiteName }}" />
+  <meta
+    property="article:publisher"
+    content="{{ $articlePublisher}}"
+  />
+  <meta property="article:modified_time" content="{{ $articleModifiedTime}}" />
+  {{- if (and (ne $articlePublishedTime "undefined") (ne $articlePublishedTime nil))}}
+  <meta property="article:published_time" content="{{$articlePublishedTime}}" />
+  {{- end }}
+  <meta
+    property="og:image"
+    content="{{$ogImage | absURL}}"
+  />
+  {{- if (and (ne $ogImageWidth "undefined") (ne $ogImageWidth nil))}}
+  <meta property="og:image:width" content="{{$ogImageWidth}}" />
+  {{- end }}
+  {{- if (and (ne $ogImageHeight "undefined") (ne $ogImageHeight nil))}}
+	<meta property="og:image:height" content="{{$ogImageHeight}}" />
+  {{- end }}
+  <meta name="twitter:card" content="{{$twitterCard}}" />
+  <meta name="twitter:site" content="{{$twitterSite}}" />
+  <meta name="twitter:label1" content="{{ $twitterLabel1 }}" />
+  <meta name="twitter:data1" content="{{$twitterData1}}" />
+  {{- if (and (ne $twitterLabel2 "undefined") (ne $twitterLabel2 nil))}}
+  <meta name="twitter:label2" content="{{ $twitterLabel2 }}" />
+  {{- end}}
+  {{- if (and (ne $twitterData2 "undefined") (ne $twitterData2 nil))}}
+  <meta name="twitter:data2" content="{{$twitterData2}}" />
+  {{- end }}
+  <meta name="google-site-verification" content="SZzCJ9gAD_2e14OAJWkaAcTKOQIBua0k5WI2DMPPtsA">
+  <link rel="dns-prefetch" href="//use.fontawesome.com" />
+  <link href="https://fonts.gstatic.com" crossorigin="" rel="preconnect" />
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="PBXDom » Feed"
+    href="{{ .Site.BaseURL }}rss.xml"
+  />
+
+  <link
+    rel="icon"
+    href="{{"/wp-content/uploads/2020/06/pbxdom000-300x300.png"| absURL}}"
+    sizes="192x192"
+  />
+  <link rel="apple-touch-icon" href="{{"/wp-content/uploads/2020/06/pbxdom000-300x300.png" | absURL}}" />
+  <meta
+    name="msapplication-TileImage"
+    content="{{ "/wp-content/uploads/2020/06/pbxdom000-300x300.png" | absURL}}"
+  />
+  <meta
+    http-equiv="origin-trial"
+    content="A727AcAeLCei/ZogJHBlJUS63SxP6AeIROo7qXrkjrxkoxBu0eSSmypAHmGYwk4HjBMQp5nxCFODzfVnUIe31AQAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjg4MDgzMTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
+  />
+  <link rel="stylesheet" type="text/css" href="/css/style.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/wpsr.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/all.css" />
+  <link rel="stylesheet" type="text/css" href="/css/frontend.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/flatpickr.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/select2.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.min.1.css" />
+  <link rel="stylesheet" type="text/css" href="/css/theme.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/elementor-icons.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/frontend-legacy.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/frontend.min.1.css" />
+  <link rel="stylesheet" type="text/css" href="/css/global.css" />
+  <link rel="stylesheet" type="text/css" href="/css/post-8.css" />
+  <link rel="stylesheet" type="text/css" href="/css/frontend.min.2.css" />
+  <link rel="stylesheet" type="text/css" href="/css/uael-frontend.min.css" />
+  {{if .Params.darkHeader}}
+  <link rel="stylesheet" type="text/css" href="/css/post-1592.css" />
+  {{else}}
+  <link rel="stylesheet" type="text/css" href="/css/post-493.css" />
+  {{end}}
+  <link rel="stylesheet" type="text/css" href="/css/post-156.css" />
+  <link rel="stylesheet" type="text/css" href="/css/enlighterjs.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/fontawesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/solid.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/regular.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/brands.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/premium-addons.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/post-6561.css" />
+  <link rel="stylesheet" type="text/css" href="/css/animations.min.css" />
+  {{if .Params.customCss}}
+  {{ range .Params.customCss }}<link rel="stylesheet" href="{{ . }}" />{{ end }}
+  {{end}}
+  {{$customCss := .Page.Scratch.Get "customCss"}}
+  {{if $customCss}}
+  {{ range $customCss }}<link rel="stylesheet" href="{{ . }}" />{{ end }}
+  {{end}}
+  {{/*  {{if .IsNode}}
+    <link rel="stylesheet" href="/css/post-147" />
+  {{end}}  */}}
+  {{ $sass := resources.Get "sass/main.scss" }} {{ $style := $sass | resources.ToCSS | resources.Fingerprint }}
+  <link
+    rel="stylesheet"
+    href="{{ $style.RelPermalink }}"
+    integrity="{{ $style.Data.Integrity }}"
+  />
+  
+  <title>{{ partial "decode.html" (dict "Value" $title) }}</title>
+</head>

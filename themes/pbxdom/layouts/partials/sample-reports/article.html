@@ -1,0 +1,43 @@
+<div class="uael-post-wrapper   {{.Section}} ">
+    <div class="uael-post__bg-wrap">
+
+
+        <div class="uael-post__inner-wrap">
+
+            <div class="uael-post__thumbnail">
+                <a target="_self"
+                    href="{{.RelPermalink}}"
+                    title="{{.Title}}"><img width="1076"
+                        height="706"
+                        src="{{.Params.featured_image}}"
+                        class="attachment-full size-full"
+                        alt="{{.Params.imageAlt}}" loading="lazy"></a>
+            </div>
+
+
+            <div class="uael-post__content-wrap">
+                <div class="uael-post__terms-wrap"></div>
+                <h3 class="uael-post__title">
+
+
+                    <a href="{{.RelPermalink}}"
+                        target="_self">
+                        {{.Title}} </a>
+
+                </h3>
+                <div class="uael-post__separator-wrap">
+                    <div
+                        class="uael-post__separator uael-post__gradient-separator">
+                    </div>
+                </div>
+                <div class="uael-post__excerpt">
+                    <p>{{.Summary | safeHTML | truncate 150}}</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

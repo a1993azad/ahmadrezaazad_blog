@@ -1,0 +1,47 @@
+backend:
+  repo: "a1993azad/ahmadrezaazad_blog"
+  site_domain: "localhost" #cms.netlify.com when on localhost
+  name: github
+  #name: test-repo
+  branch: dev # Branch to update (optional; defaults to master)
+  base_url: "http://localhost"
+  auth_endpoint: "auth"
+  cms_label_prefix: "admin_cms/"
+  commit_messages:
+        create: "Create {{collection}} “{{slug}}”"
+        update: "Update {{collection}} “{{slug}}”"
+        delete: "Delete {{collection}} “{{slug}}”"
+        uploadMedia: "Upload “{{path}}”"
+        deleteMedia: "Delete “{{path}}”"
+publish_mode: editorial_workflow
+media_folder: "static/wp-content/uploads" # Media files will be stored in the repo under static/images/uploads
+public_folder: "/wp-content/uploads" # The src attribute for uploaded media will begin with /images/uploads
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog" # Used in the UI
+    label_singular: 'blog'
+    folder: "content/blog" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    # adding a nested object will show the collection folder structure
+    nested:
+      depth: 3 # max depth to show in the collection tree
+      summary: '{{title}}' # optional summary for a tree node, defaults to the inferred title field
+    # adding a meta object with a path property allows editing the path of entries
+    # moving an existing entry will move the entire sub tree of the entry to the new location
+    meta: { path: { widget: select, label: 'Category', index_file: '_index',options: ["corporate","engineering","product"] } }
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "single"}
+      - {label: "type", name: "type", widget: "hidden", default: "post"}
+      - {label: "customCss", name: "customCss", widget: "hidden", default: ["/css/post-230.css"]}
+      - {label: "darkHeader", name: "darkHeader", widget: "hidden", default: true}
+      - {label: "Title", name: "title", widget: "string",pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "A slug can have no spaces or special characters"]}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Tags", name: "tags", widget: "list", allow_add: true, hint: "Separate by comma `,`"}
+      - {label: "Authors", name: "authors", widget: "list", allow_add: true}
+      - {label: "Related To", name: "relatedTo", widget: "relation", multiple: true, collection: "blog",value_field: "{{slug}}", search_fields: ["{{slug}}","title"]}
+      - {label: "Featured Image", name: "featured_image", widget: "image"}
+      - {label: "Alt of the Featured Image", name: "imageAlt", widget: "string"}
+      - {label: "Read Time", name: "readTime", widget: "string",hint: "< 1 min read Or 2 min read", pattern: ['(< )*\d+ (min read)','Valid pattern is: `2 min read` | `< 1 min read`']}
+      - {label: "Body", name: "body", widget: "markdown"}
