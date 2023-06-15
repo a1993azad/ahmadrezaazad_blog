@@ -15,7 +15,7 @@ authors:
   - rezamousavi
 relatedTo:
   - corporate/9-tips-for-self-success/_index
-  - engineering/101-free-video-training-cisco-unified-communications-manager-part-3/_index
+  - engineering/12-phone-models-not-supported-by-cucm-12/_index
 featured_image: /wp-content/uploads/5-years-data-retention-1.jpg
 imageAlt: alt 1
 readTime: 1 min read
