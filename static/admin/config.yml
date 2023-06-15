@@ -22,25 +22,26 @@ collections:
     label_singular: 'blog'
     folder: "content/blog" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    slug: "{{category}}/{{slug}}/_index" # Filename template, e.g., YYYY-MM-DD-title.md
     # adding a nested object will show the collection folder structure
     nested:
       depth: 3 # max depth to show in the collection tree
       summary: '{{title}}' # optional summary for a tree node, defaults to the inferred title field
     # adding a meta object with a path property allows editing the path of entries
     # moving an existing entry will move the entire sub tree of the entry to the new location
-    #meta: { path: { widget: select, label: 'Category', index_file: '_index',options: ["corporate","engineering","product"] } }
+   # meta: { path: { widget: select, label: 'Category', index_file: '_index',options: ["corporate","engineering","product"] } }
     fields: # The fields for each document, usually in front matter
       - {label: "Layout", name: "layout", widget: "hidden", default: "single"}
       - {label: "type", name: "type", widget: "hidden", default: "post"}
       - {label: "customCss", name: "customCss", widget: "hidden", default: ["/css/post-230.css"]}
       - {label: "darkHeader", name: "darkHeader", widget: "hidden", default: true}
+      - {label: "Category", name: "category", widget: "select",options: ["corporate","engineering","product"]}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Tags", name: "tags", widget: "list", allow_add: true, hint: "Separate by comma `,`"}
       - {label: "Authors", name: "authors", widget: "list", allow_add: true}
-      - {label: "Related To", name: "relatedTo", widget: "relation", multiple: true, collection: "blog",value_field: "{{slug}}", search_fields: ["{{slug}}","title"]}
+      - {label: "Related To", name: "relatedTo", widget: "relation", multiple: true, collection: "blog",value_field: "{{category}}", search_fields: ["{{slug}}","title"]}
       - {label: "Featured Image", name: "featured_image", widget: "image"}
       - {label: "Alt of the Featured Image", name: "imageAlt", widget: "string"}
       - {label: "Read Time", name: "readTime", widget: "string",hint: "< 1 min read Or 2 min read", pattern: ['(< )*\d+ (min read)','Valid pattern is: `2 min read` | `< 1 min read`']}
